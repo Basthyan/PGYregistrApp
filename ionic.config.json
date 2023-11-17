@@ -1,0 +1,7 @@
+{
+  "name": "PGYregistrApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
