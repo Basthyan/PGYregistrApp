@@ -3,17 +3,17 @@
     <ion-img class="img" src="assets/icon/Registrapp.png" alt="RegistrApp Logo"></ion-img>
   </div><br><br>
   <h1 class="title">¡Bienvenido a RegistrApp!</h1><br>
-  <form action="">
+  <form [formGroup]="usuario">
     <ion-item>
       <ion-label postion="floating">Usuario</ion-label>
-      <ion-input></ion-input>
+      <ion-input label="{{textUser}}"placeholder="{{desUser}}" formControlName="username"></ion-input>
     </ion-item><br>
     <ion-item>
       <ion-label postion="floating">Contraseña</ion-label>
-      <ion-input></ion-input>
+      <ion-input label="{{textPass}}" placeholder="{{desPass}}" formControlName="password"></ion-input>
     </ion-item><br>
     <div class="ion-padding-top">
-      <ion-button expand="block" type="submit" color="warning">Iniciar Sesión </ion-button>
+      <ion-button expand="block" (click)="apiLogin()" color="warning">{{textBtn}}</ion-button>
     </div><br>
     <div class="link">
       <a [routerLink]="['/recuperacion']">¿Olvidaste tu contraseña?,reiniciala aqui!</a>

@@ -1,20 +1,73 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<!-- Navbar -->
+<mat-toolbar class="navbar">
+    <mat-toolbar-row>
+      <span>RegistrApp</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <!-- Inicio de Estudiantes -->
+  <ion-content>
+    <br>
+    <h1 class="title"> ¡Bienvenido a RegistrApp! </h1>
+    <h1 class="title"></h1>
+   
+    <h3 class="subTitle">Asignaturas:</h3>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Arquitectura</ion-card-title>
+        <ion-card-subtitle>Vicente Aranda</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Seccion: ASY0131-003D
+      </ion-card-content>
+    
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+    </ion-card> <br>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Prog. Aplicaciones</ion-card-title>
+        <ion-card-subtitle>Juan Pulgar</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Seccion: PGY4121-003D
+      </ion-card-content>
+    
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+    </ion-card> <br>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Calidad de Software</ion-card-title>
+        <ion-card-subtitle>Cindy Contador</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Seccion: CSY4111-006D
+      </ion-card-content>
+    
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+    </ion-card> <br>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Ingles Intermedio</ion-card-title>
+        <ion-card-subtitle>Ramon Pozo</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Seccion: INI5111-018D
+      </ion-card-content>
+    
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+    </ion-card> <br>
+  
+    <div class="ion-button">
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)" type="submit">Cerrar sesion</ion-button>
+    </div>
+    <br><br>
+  
+  </ion-content>

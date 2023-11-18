@@ -4,60 +4,61 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-usuarios = [
+profesores = [
     {
         "id": 1,
-        "user": "juan.pulgar",
-        "password": "juan.pulgar1",
-        "nombre": "Juan Pulgar",
-        "perfil":  1,
-        "correo": "docente@gmail.com"
-    },
-    {
-        "id": 2,
-        "user": "Da.moralesf",
-        "password": "da.moralesf1",
-        "nombre": "Danilo Morales",
-        "perfil": 2,
-        "correo": "da.moralesf@duocuc.cl"
-    },
-    {
-        "id": 3,
-        "user": "agu.quezada",
-        "password": "agu.quezada1",
-        "nombre": "Agustín Quezada",
-        "perfil": 2,
-        "correo": "agu.quezada@duocuc.cl"
-    },
-    {
-        "id": 4,
-        "user": "a",
-        "password": "a",
-        "nombre": "Pruebas",
-        "perfil": 2,
-        "correo": "a@a.cl"
-    }
-]
-
-secciones = [
-    {
-        "id": 1,
-        "nombre": "Juan Pulgar",
+        "nombre": "Juan Pérez",
         "cursos": [
             {
                 "id": 1,
-                "nombre": "Programacion de Aplicaciones Moviles",
-                "codigo": "PGY4121-003D",
+                "nombre": "Matemáticas",
+                "codigo": "PGY0000",
+                "seccion": "013V",
                 "alumnos": [
-                    {"id": 1, "nombre": "Danilo Morales"},
-                    {"id": 2, "nombre": "Agustín Quezada"}
+                    {"id": 1, "nombre": "Luis"},
+                    {"id": 2, "nombre": "María"}
                 ]
+            },
+            {
+                "id": 2,
+                "nombre": "Fisica",
+                "codigo": "PGY0000",
+                "seccion": "015V",
+                "alumnos": []
+            },
+            {
+                "id": 3,
+                "nombre": "Quimica",
+                "codigo": "PGY0000",
+                "seccion": "018V",
+                "alumnos": []
             }
         ]
     }
 ]
 
-""" Validaciones """
+
+usuarios = [
+    {
+        "id": 1,
+        "user": "docente",
+        "password": "password1",
+        "nombre": "Juan Perez",
+        "perfil":  1,
+        "correo": "docente@gmail.com"
+    },
+    {
+        "id": 2,
+        "user": "alumno",
+        "password": "password2",
+        "nombre": "Luis Gonzalez",
+        "perfil": 2,
+        "correo": "alumno@gmail.com"
+    }
+]
+
+
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -78,20 +79,39 @@ def login():
         return jsonify({"message": "Credenciales incorrectas"}), 401
 
 
-@app.route('/secciones', methods=['GET'])
-def obtener_profesores():
-    return jsonify(secciones), 200
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('user')
+    password = request.json.get('password')
+    
+    usuario = next((u for u in usuarios if u["user"] == username and u["password"] == password), None)
+    
+    if usuario:
+        return jsonify({
+            "id": usuario["id"],
+            "nombre": usuario["nombre"],
+            "user": usuario["user"],
+            "correo": usuario["correo"],
+            "tipoPerfil": usuario["perfil"]
+        }), 200
+    else:
+        return jsonify({"message": "Credenciales incorrectas"}), 401
 
-@app.route('/secciones/<int:secciones_id>/cursos', methods=['GET'])
-def obtener_cursos_profesor(secciones_id):
-    profesor = next((p for p in secciones if p["id"] == secciones_id), None)
+
+@app.route('/profesores', methods=['GET'])
+def obtener_profesores():
+    return jsonify(profesores), 200
+
+@app.route('/profesores/<int:profesor_id>/cursos', methods=['GET'])
+def obtener_cursos_profesor(profesor_id):
+    profesor = next((p for p in profesores if p["id"] == profesor_id), None)
     if not profesor:
         return jsonify({"message": "Profesor no encontrado"}), 404
-    return jsonify(secciones["cursos"]), 200
+    return jsonify(profesor["cursos"]), 200
 
-@app.route('/secciones/<int:secciones_id>/cursos/<int:curso_id>/alumnos', methods=['GET'])
+@app.route('/profesores/<int:profesor_id>/cursos/<int:curso_id>/alumnos', methods=['GET'])
 def obtener_alumnos_curso(profesor_id, curso_id):
-    profesor = next((p for p in secciones if p["id"] == profesor_id), None)
+    profesor = next((p for p in profesores if p["id"] == profesor_id), None)
     if not profesor:
         return jsonify({"message": "Profesor no encontrado"}), 404
     curso = next((c for c in profesor["cursos"] if c["id"] == curso_id), None)
