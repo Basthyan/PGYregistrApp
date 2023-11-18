@@ -1,0 +1,52 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+        "user": "juan.pulgar",
+        "password": "Contraseña1",
+        "nombre": "Juan Pulgar",
+        "perfil":  1,
+        "correo": "juan.pulgar@duocuc.cl"
+    },
+
+    {
+      "id": 2,
+        "user": "agu.quezada",
+        "password": "Contraseña2",
+        "nombre": "Agustin Quezada",
+        "perfil":  2,
+        "correo": "agu.quezada@duocuc.cl"
+    },
+
+    {
+      "id": 3,
+        "user": "da.morales",
+        "password": "Contraseña3",
+        "nombre": "Danilo Morales",
+        "perfil":  2,
+        "correo": "da.moralesf@duocuc.cl"
+    },
+
+    {
+      "id": 4,
+        "user": "a",
+        "password": "a",
+        "nombre": "Pruebas",
+        "perfil":  2,
+        "correo": "a@a.cl"
+    }
+  ],
+
+  "asignaturas": [
+    {
+      "id": 1,
+      "nombre": "Programacion de aplicaciones moviles",
+      "codigo": "PGY4121-003D",
+      "alumnos": [
+        {"id": 1, "nombre": "Danilo Morales"},
+        {"id": 2, "nombre": "Agustin Quezada"}
+      ]
+    }
+  
+  ]
+}
