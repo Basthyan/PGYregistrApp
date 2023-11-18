@@ -58,27 +58,6 @@ usuarios = [
 ]
 
 
-
-
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.json.get('user')
-    password = request.json.get('password')
-    
-    usuario = next((u for u in usuarios if u["user"] == username and u["password"] == password), None)
-    
-    if usuario:
-        return jsonify({
-            "id": usuario["id"],
-            "nombre": usuario["nombre"],
-            "user": usuario["user"],
-            "correo": usuario["correo"],
-            "tipoPerfil": usuario["perfil"]
-        }), 200
-    else:
-        return jsonify({"message": "Credenciales incorrectas"}), 401
-
-
 @app.route('/login', methods=['POST'])
 def login():
     username = request.json.get('user')
