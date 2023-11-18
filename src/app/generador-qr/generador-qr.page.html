@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>generadorQr</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Navbar -->
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <span>RegistrApp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">generadorQr</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <h1 class="title">{{ cursol?.nombre }}</h1>
+
+  <div class="qr"><img class="qr" [src]="qrDataURL" *ngIf="qrDataURL"></div>
+
+  <h3 class="subtitle">Escanea este qr para registrar tu asistencia!</h3>
+  
+  <div class="boton"><ion-button color="warning" (click)="volver()">Volver</ion-button></div>
+  
 </ion-content>
+

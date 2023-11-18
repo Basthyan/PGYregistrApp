@@ -7,31 +7,17 @@ CORS(app)
 profesores = [
     {
         "id": 1,
-        "nombre": "Juan Pérez",
+        "nombre": "Juan Pulgar",
         "cursos": [
             {
                 "id": 1,
-                "nombre": "Matemáticas",
-                "codigo": "PGY0000",
-                "seccion": "013V",
+                "nombre": "Programacion de Aplicaciones Moviles",
+                "codigo": "PGY4121",
+                "seccion": "003D",
                 "alumnos": [
-                    {"id": 1, "nombre": "Luis"},
-                    {"id": 2, "nombre": "María"}
+                    {"id": 1, "nombre": "Danilo"},
+                    {"id": 2, "nombre": "Agustin"}
                 ]
-            },
-            {
-                "id": 2,
-                "nombre": "Fisica",
-                "codigo": "PGY0000",
-                "seccion": "015V",
-                "alumnos": []
-            },
-            {
-                "id": 3,
-                "nombre": "Quimica",
-                "codigo": "PGY0000",
-                "seccion": "018V",
-                "alumnos": []
             }
         ]
     }
@@ -41,19 +27,35 @@ profesores = [
 usuarios = [
     {
         "id": 1,
-        "user": "docente",
-        "password": "password1",
-        "nombre": "Juan Perez",
+        "user": "juanPulgar",
+        "password": "JuanP1",
+        "nombre": "Juan Pulgar",
         "perfil":  1,
-        "correo": "docente@gmail.com"
+        "correo": "profesor@duocuc.cl"
     },
     {
         "id": 2,
-        "user": "alumno",
-        "password": "password2",
-        "nombre": "Luis Gonzalez",
+        "user": "daniloMorales",
+        "password": "Dani01",
+        "nombre": "Danilo Morales",
         "perfil": 2,
-        "correo": "alumno@gmail.com"
+        "correo": "alumno@duocuc.cl"
+    },
+    {
+        "id": 3,
+        "user": "a",
+        "password": "a",
+        "nombre": "Pruebas",
+        "perfil": 2,
+        "correo": "alumno@duocuc.cl"
+    },
+    {
+        "id": 4,
+        "user": "aguQuezada",
+        "password": "aguQuezada1",
+        "nombre": "Agustin Quezada",
+        "perfil": 2,
+        "correo": "alumno@duocuc.cl"
     }
 ]
 

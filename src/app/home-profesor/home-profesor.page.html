@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>homeProfesor</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Navbar -->
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <span>RegistrApp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">homeProfesor</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <h1 class="title">Bienvenido a RegistrApp!</h1>
+  <h1 class="title">{{ userHome }}</h1>
+
+  <ion-card class="card">
+    <ion-list>
+      <ion-item *ngFor="let curso of cursos">
+        <ion-label>
+          <h2>{{ curso.nombre }}</h2>
+          <h3>Código: {{ curso.codigo }}</h3>
+          <h3>Sección: {{ curso.seccion }}</h3>
+        </ion-label>
+        <ion-button fill="clear" (click)="verDetalleCurso(curso.id)" style="color: rgb(252, 252, 76)">Ver Detalle</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <div class="boton"><ion-button fill="clear" style="color: rgb(252, 252, 76)" (click)="volver()">Cerrar Sesion</ion-button></div>
+
 </ion-content>

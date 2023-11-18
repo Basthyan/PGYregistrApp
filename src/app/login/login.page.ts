@@ -12,6 +12,8 @@ import { Perfil } from '../modelo/perfil';
 import { Curso } from '../modelo/curso';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { ApiService } from 'src/services/api.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -24,18 +26,15 @@ export class LoginPage implements OnInit {
     private animationCtrl: AnimationController,
     private auth: AuthGuard,
     private api: ApiService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private snackBar: MatSnackBar
   ) {}
 
   private typeuser!: Usuario;
   private typePerfil!: Perfil;
   private curso!:Curso;
 
-  textBtn = "INGRESAR";
-  textUser = "Usuario";
-  textPass = "Contraseña";
-  desUser = "ingrese usuario";
-  desPass = "ingrese contraseña";
+  enProceso: boolean = false;
 
     usuario = new FormGroup({
     username: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(20)]),
@@ -75,8 +74,16 @@ export class LoginPage implements OnInit {
         },
         (error) => {
           console.error('Error en inicio de sesión:', error);
+          this.mostrarMensajeError('Datos incorrectos. Por favor, inténtalo de nuevo.');
         }
       );
+  }
+
+  mostrarMensajeError(mensaje: string) {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 5000, // duración en milisegundos
+      panelClass: ['mat-toolbar', 'mat-warn'] // clase CSS personalizada para el snackbar
+    });
   }
 
   ngOnInit() {}
