@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     private auth: AuthGuard,
     private api: ApiService,
     private alertController: AlertController,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   private typeuser!: Usuario;
@@ -85,6 +85,5 @@ export class LoginPage implements OnInit {
       panelClass: ['mat-toolbar', 'mat-warn'] // clase CSS personalizada para el snackbar
     });
   }
-
   ngOnInit() {}
 }
