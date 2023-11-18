@@ -8,9 +8,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -29,7 +30,11 @@ const routes: Routes = [
   {
     path: 'scanner-qr',
     loadChildren: () => import('./scanner-qr/scanner-qr.module').then( m => m.ScannerQrPageModule)
+  },  {
+    path: 'recuperacion',
+    loadChildren: () => import('./recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
   },
+
 
 ];
 

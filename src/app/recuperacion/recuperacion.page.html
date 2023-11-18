@@ -1,0 +1,27 @@
+<!-- Navbar -->
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <span class="span">RegistrApp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<ion-content>
+
+  <!-- Contenido -->
+
+<div class="container">
+  <ion-img
+  class="img"
+    src="assets/icon/Registrapp.png"
+    alt="RegistrApp Logo"
+  ></ion-img>
+</div>
+
+<h1 class="title"> ¡Bienvenido al sistema de recuperación!</h1>
+<p class="content">Ingresa tu correo institucional de DuocUC para recibir un correo con el protocolo de inicio de sesion</p>
+<div class="input"><ion-input label="Correo Electronico" label-placement="floating" fill="outline" placeholder="ex. duoc@duocuc.cl"></ion-input></div>
+
+<div class="boton" (click)="mostrarMensajeYRedirigir()"><ion-button color="warning">Recuperar contraseña</ion-button></div>
+
+
+</ion-content>

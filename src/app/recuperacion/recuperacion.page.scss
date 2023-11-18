@@ -1,0 +1,46 @@
+.navbar {
+    background-color: rgb(252, 252, 76);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.span{
+    text-align: center;
+    font-weight: bold;
+}
+
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 250px;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.title{
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.content{
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.input{
+  margin: 30px;
+}
+
+.boton{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
