@@ -1,13 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>notFound</ion-title>
-  </ion-toolbar>
-</ion-header>
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <span>RegistrApp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">notFound</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Contenido de la pagina -->
+<ion-content>
+  <h1 class="error"> ¡404! </h1>
+  <h2 class="error1">¡Lo sentimos!</h2>
+  <h3 class="content2"> La pagina que a seleccionado, no se ha encontrado. </h3>
+  <br><br>
+  <div class="buton" [routerLink]="['/home']"><ion-button color="warning">Volver</ion-button></div>
 </ion-content>

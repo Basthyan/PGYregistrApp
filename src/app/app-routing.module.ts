@@ -30,9 +30,15 @@ const routes: Routes = [
   {
     path: 'scanner-qr',
     loadChildren: () => import('./scanner-qr/scanner-qr.module').then( m => m.ScannerQrPageModule)
-  },  {
+  },
+  {
     path: 'recuperacion',
     loadChildren: () => import('./recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+    pathMatch: 'full'
   },
 
 
