@@ -14,7 +14,6 @@ import { AuthGuard } from 'src/guard/auth.guard';
 import { ApiService } from 'src/services/api.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -27,21 +26,38 @@ export class LoginPage implements OnInit {
     private auth: AuthGuard,
     private api: ApiService,
     private alertController: AlertController,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar
   ) {}
 
   private typeuser!: Usuario;
   private typePerfil!: Perfil;
-  private curso!:Curso;
+  private curso!: Curso;
 
   enProceso: boolean = false;
 
-    usuario = new FormGroup({
-    username: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(20)]),
-    password: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(20)]),
+  usuario = new FormGroup({
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(20),
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(20),
+    ]),
+    rememberMe: new FormControl(false),
   });
 
   Login() {
+    console.log('Datos del formulario:', this.usuario.value);
+
+    if (this.usuario.value.rememberMe) {
+      localStorage.setItem('rememberMe', this.usuario.value.rememberMe.toString());
+    } else {
+      localStorage.removeItem('rememberMe');
+    }
+
     this.api
       .login(this.usuario.value.username!, this.usuario.value.password!)
       .subscribe(
@@ -74,7 +90,9 @@ export class LoginPage implements OnInit {
         },
         (error) => {
           console.error('Error en inicio de sesión:', error);
-          this.mostrarMensajeError('Datos incorrectos. Por favor, inténtalo de nuevo.');
+          this.mostrarMensajeError(
+            'Datos incorrectos. Por favor, inténtalo de nuevo.'
+          );
         }
       );
   }
@@ -82,8 +100,13 @@ export class LoginPage implements OnInit {
   mostrarMensajeError(mensaje: string) {
     this.snackBar.open(mensaje, 'Cerrar', {
       duration: 5000, // duración en milisegundos
-      panelClass: ['mat-toolbar', 'mat-warn'] // clase CSS personalizada para el snackbar
+      panelClass: ['mat-toolbar', 'mat-warn'], // clase CSS personalizada para el snackbar
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    const rememberMe = localStorage.getItem('rememberMe');
+    if (rememberMe !== null) {
+      this.usuario.patchValue({ rememberMe: rememberMe === 'true' });
+    }
+  }
 }
