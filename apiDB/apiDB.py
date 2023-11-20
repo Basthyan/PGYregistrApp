@@ -14,10 +14,7 @@ profesores = [
                 "nombre": "Programacion de Aplicaciones Moviles",
                 "codigo": "PGY4121",
                 "seccion": "003D",
-                "alumnos": [
-                    {"id": 1, "nombre": "Danilo"},
-                    {"id": 2, "nombre": "Agustin"}
-                ]
+                "alumnos": []
             }
         ]
     }

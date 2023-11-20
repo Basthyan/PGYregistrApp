@@ -38,12 +38,14 @@ const routes: Routes = [
     loadChildren: () => import('./recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
   },
   {
+    path: 'marcar-asistencia',
+    loadChildren: () => import('./marcar-asistencia/marcar-asistencia.module').then( m => m.MarcarAsistenciaPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
     pathMatch: 'full'
   },
-
-
 ];
 
 @NgModule({
