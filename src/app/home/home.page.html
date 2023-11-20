@@ -15,19 +15,6 @@
   
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Arquitectura</ion-card-title>
-        <ion-card-subtitle>Vicente Aranda</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Seccion: ASY0131-003D
-      </ion-card-content>
-    
-      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
-    </ion-card> <br>
-  
-    <ion-card>
-      <ion-card-header>
         <ion-card-title>Prog. Aplicaciones</ion-card-title>
         <ion-card-subtitle>Juan Pulgar</ion-card-subtitle>
       </ion-card-header>
@@ -36,7 +23,7 @@
         Seccion: PGY4121-003D
       </ion-card-content>
     
-      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)" (click)="scanQRCode()">Registrar Asistencia</ion-button>
     </ion-card> <br>
   
     <ion-card>
