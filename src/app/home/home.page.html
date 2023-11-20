@@ -10,21 +10,6 @@
     <br>
     <h1 class="title"> ¡Bienvenido a RegistrApp! </h1>
     <h1 class="title"></h1>
-   
-    <h3 class="subTitle">Asignaturas:</h3>
-  
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Arquitectura</ion-card-title>
-        <ion-card-subtitle>Vicente Aranda</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Seccion: ASY0131-003D
-      </ion-card-content>
-    
-      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
-    </ion-card> <br>
   
     <ion-card>
       <ion-card-header>
@@ -36,7 +21,7 @@
         Seccion: PGY4121-003D
       </ion-card-content>
     
-      <ion-button fill="clear" style="color: rgb(252, 252, 76)">Registrar Asistencia</ion-button>
+      <ion-button fill="clear" style="color: rgb(252, 252, 76)" (click)="uwu(); scan()">Registrar Asistencia</ion-button>
     </ion-card> <br>
   
     <ion-card>
@@ -68,6 +53,7 @@
     <div class="ion-button">
       <ion-button  type="submit" fill="clear" style="color: rgb(252, 252, 76)" (click)="volver()">Cerrar sesion</ion-button>
     </div>
+    
     <br><br>
   
   </ion-content>

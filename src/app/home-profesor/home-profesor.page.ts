@@ -23,6 +23,7 @@ export class HomeProfesorPage implements OnInit {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
         this.idProfesor = this.router.getCurrentNavigation()?.extras.state?.['id'];
+        
       }
     });
 
