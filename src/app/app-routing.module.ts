@@ -38,14 +38,11 @@ const routes: Routes = [
     loadChildren: () => import('./recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
   },
   {
-    path: 'scanner',
-    loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule)
-  },
-  {
     path: '**',
     redirectTo: 'not-found',
     pathMatch: 'full'
   },
+
 
 ];
 

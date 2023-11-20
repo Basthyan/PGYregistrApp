@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 
 import { HomePageRoutingModule } from './home-routing.module';
 
@@ -27,7 +27,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     MatButtonModule,
     MatDialogModule
   ],
-  declarations: [HomePage],
-  providers: [BarcodeScanner]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
