@@ -1,18 +1,14 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
-import { AlertController, Animation, AnimationController,} from '@ionic/angular';
-import type { QueryList } from '@angular/core';
+import { AlertController, AnimationController,} from '@ionic/angular';
 import { Usuario } from '../modelo/usuario';
 import { Perfil } from '../modelo/perfil';
 import { Curso } from '../modelo/curso';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { ApiService } from 'src/services/api.service';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -59,7 +55,6 @@ export class LoginPage implements OnInit {
       localStorage.removeItem('rememberMe');
     }
 
-    //Devuelve true en la carga del sipnner
     this.showSpinner = true;
 
     this.api
@@ -99,7 +94,7 @@ export class LoginPage implements OnInit {
           );
         },
         () => {
-          this.showSpinner = false; //termino del inicio de sesion
+          this.showSpinner = false;
         }
       );
   }
@@ -107,7 +102,7 @@ export class LoginPage implements OnInit {
   mostrarMensajeError(mensaje: string) {
     this.snackBar.open(mensaje, 'Cerrar', {
       duration: 5000, // duración en milisegundos
-      panelClass: ['mat-toolbar', 'mat-warn'], // clase CSS personalizada para el snackbar
+      panelClass: ['mat-toolbar', 'mat-warn'],
     });
   }
 
