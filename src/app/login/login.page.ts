@@ -1,11 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
-import {
-  AlertController,
-  Animation,
-  AnimationController,
-} from '@ionic/angular';
+import { AlertController, Animation, AnimationController,} from '@ionic/angular';
 import type { QueryList } from '@angular/core';
 import { Usuario } from '../modelo/usuario';
 import { Perfil } from '../modelo/perfil';
@@ -13,6 +9,9 @@ import { Curso } from '../modelo/curso';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { ApiService } from 'src/services/api.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +19,15 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  showSpinner: boolean = false;
   constructor(
     private router: Router,
     private animationCtrl: AnimationController,
     private auth: AuthGuard,
     private api: ApiService,
     private alertController: AlertController,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   private typeuser!: Usuario;
@@ -57,6 +58,9 @@ export class LoginPage implements OnInit {
     } else {
       localStorage.removeItem('rememberMe');
     }
+
+    //Devuelve true en la carga del sipnner
+    this.showSpinner = true;
 
     this.api
       .login(this.usuario.value.username!, this.usuario.value.password!)
@@ -93,6 +97,9 @@ export class LoginPage implements OnInit {
           this.mostrarMensajeError(
             'Datos incorrectos. Por favor, inténtalo de nuevo.'
           );
+        },
+        () => {
+          this.showSpinner = false; //termino del inicio de sesion
         }
       );
   }
@@ -103,6 +110,7 @@ export class LoginPage implements OnInit {
       panelClass: ['mat-toolbar', 'mat-warn'], // clase CSS personalizada para el snackbar
     });
   }
+
   ngOnInit() {
     const rememberMe = localStorage.getItem('rememberMe');
     if (rememberMe !== null) {
@@ -110,3 +118,4 @@ export class LoginPage implements OnInit {
     }
   }
 }
+
