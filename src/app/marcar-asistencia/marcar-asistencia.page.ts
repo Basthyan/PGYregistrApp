@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-marcar-asistencia',
@@ -8,7 +9,28 @@ import { NavController } from '@ionic/angular';
 })
 export class MarcarAsistenciaPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  barcodes: any[] = [];
+  
+  public datos= {
+    sigla: "",
+    seccion: "",
+    fecha: "",
+    hora: ""
+  }
+
+  constructor(private navCtrl: NavController, private route: ActivatedRoute) { 
+
+    this.route.queryParams.subscribe((params) => {
+      if (params && params['state']) {
+        this.barcodes = params['state'].barcodes;
+        this.datos.sigla = this.barcodes[0];
+        this.datos.seccion = this.barcodes[1];
+        this.datos.fecha = this.barcodes[2];
+        this.datos.hora = this.barcodes[3];
+      }
+    });
+    
+  }
 
   abrirCorreo() {
     // Dirección de correo electrónico y otros parámetros opcionales

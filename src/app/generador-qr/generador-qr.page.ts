@@ -12,6 +12,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./generador-qr.page.scss'],
 })
 export class GeneradorQrPage implements OnInit {
+  
   cursol: Curso | undefined;
   alumnosl: Alumno[] | undefined = [];
   profesorId: number = 1;
