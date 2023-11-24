@@ -33,7 +33,6 @@ export class MarcarAsistenciaPage implements OnInit {
   }
 
   abrirCorreo() {
-    // Dirección de correo electrónico y otros parámetros opcionales
     let destinatario = 'profesor@duocuc.cl';
     let asunto = 'Marcaje de asistencia';
     let cuerpo = 'Cuerpo del correo';

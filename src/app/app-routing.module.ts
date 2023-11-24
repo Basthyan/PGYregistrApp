@@ -19,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'home-profesor',
-    loadChildren: () => import('./home-profesor/home-profesor.module').then( m => m.HomeProfesorPageModule)
+    loadChildren: () => import('./home-profesor/home-profesor.module').then( m => m.HomeProfesorPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'not-found',

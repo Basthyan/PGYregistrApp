@@ -9,19 +9,31 @@
 
   <!-- Contenido -->
 
-<div class="container">
-  <ion-img
-  class="img"
-    src="assets/icon/Registrapp.png"
-    alt="RegistrApp Logo"
-  ></ion-img>
-</div>
+  <div class="container">
+    <ion-img class="img" src="assets/icon/Registrapp.png" alt="RegistrApp Logo"></ion-img>
+  </div>
 
-<h1 class="title"> ¡Bienvenido al sistema de recuperación!</h1>
-<p class="content">Ingresa tu correo institucional de DuocUC para recibir un correo con el protocolo de inicio de sesion</p>
-<div class="input"><ion-input label="Correo Electronico" label-placement="floating" fill="outline" placeholder="ex. duoc@duocuc.cl"></ion-input></div>
+  <h1 class="title"> ¡Bienvenido al sistema de recuperación!</h1>
+  <p class="content">Ingresa tu correo institucional de DuocUC para recibir un correo con el protocolo de inicio de sesión.</p>
 
-<div class="boton" (click)="mostrarMensajeYRedirigir()"><ion-button color="warning">Recuperar contraseña</ion-button></div>
+  <form [formGroup]="recuperacionForm" (ngSubmit)="mostrarMensajeYRedirigir()">
+    <!-- Input de Correo Electrónico -->
+    <ion-item [class.invalid]="recuperacionForm.get('correo')?.invalid && recuperacionForm.get('correo')?.touched">
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <div class="input">
+        <ion-input formControlName="correo" class="email" label-placement="floating" fill="outline"></ion-input>
+      </div>  
+    </ion-item>
+    
+    <div *ngIf="recuperacionForm.get('correo')?.hasError('email') && recuperacionForm.get('correo')?.touched"
+         class="error-message">
+      Correo electrónico no válido.
+    </div><br><br>
 
+    <div class="boton">
+      <ion-button color="warning" type="submit">Recuperar contraseña</ion-button>
+    </div>
+
+  </form>
 
 </ion-content>

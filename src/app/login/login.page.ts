@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     private auth: AuthGuard,
     private api: ApiService,
     private alertController: AlertController,
-    private snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router,NavigationExtras } from "@angular/router";
+import { ActivatedRoute, Router, NavigationExtras } from "@angular/router";
 import { ApiService } from 'src/services/api.service';
 import { NavController } from '@ionic/angular';
 
@@ -13,7 +13,6 @@ export class HomeProfesorPage implements OnInit {
 
   userHome: any;
   pass: any;
-  value = "dcaresg";
   idProfesor : any;
 
   cursos: any[] = [];

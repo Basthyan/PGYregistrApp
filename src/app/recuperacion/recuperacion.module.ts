@@ -9,6 +9,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {MatInputModule} from '@angular/material/input';
     MatMenuModule,
     MatIconModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   declarations: [RecuperacionPage]
 })
