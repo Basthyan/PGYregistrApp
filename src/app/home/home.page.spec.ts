@@ -1,18 +1,76 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
-import { By } from '@angular/platform-browser';
 import { HomePage } from './home.page';
+import { NavController, AlertController, Platform } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  BarcodeScanner,
+  BarcodeScannerResult,
+} from '@capacitor-mlkit/barcode-scanning';
+import { of } from 'rxjs';
+
+// Mock para NavController
+class NavControllerMock {
+  navigateForward = jasmine.createSpy('navigateForward');
+}
+
+// Mock para AlertController
+class AlertControllerMock {
+  create = jasmine.createSpy('create').and.returnValue(Promise.resolve());
+}
+
+// Mock para ActivatedRoute
+class ActivatedRouteMock {
+  queryParams = of({ user: 'testUser' }); // ajusta los valores según tus necesidades
+}
+
+// Mock para Router
+class RouterMock {
+  getCurrentNavigation() {
+    return {
+      extras: {
+        state: { user: 'testUser' }, // ajusta los valores según tus necesidades
+      },
+    };
+  }
+  navigate = jasmine.createSpy('navigate');
+}
+
+// Mock para BarcodeScanner
+class BarcodeScannerMock {
+  scan(options: any): Promise<{ barcodes: BarcodeScannerResult[] }> {
+    // Simula la respuesta del escaneo
+    const barcodeResult: BarcodeScannerResult = {
+      format: 'QR_CODE',
+      data: 'testQRCodeData',
+      cancelled: false,
+    };
+    return Promise.resolve({ barcodes: [barcodeResult] });
+  }
+
+  installGoogleBarcodeScannerModule(): Promise<void> {
+    return Promise.resolve();
+  }
+}
 
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [HomePage],
-      imports: [IonicModule.forRoot()]
+      providers: [
+        { provide: NavController, useClass: NavControllerMock },
+        { provide: AlertController, useClass: AlertControllerMock },
+        { provide: ActivatedRoute, useClass: ActivatedRouteMock },
+        { provide: Router, useClass: RouterMock },
+        { provide: BarcodeScanner, useClass: BarcodeScannerMock },
+        Platform,
+      ],
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -22,19 +80,18 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('click en el botón de escaneo muestra el código QR', async () => {
-    spyOn(component, 'scan'); // Espía
+  it('should scan and navigate to /marcar-asistencia', async () => {
+    spyOn(component, 'showScanResultAlert').and.returnValue(Promise.resolve());
 
-    const button = fixture.debugElement.query(By.css('ion-button'));
+    await component.scan();
 
-    // Hace la simulación de un click en el botón
-    button.triggerEventHandler('click', null);
-
-    // Esperar a que se resuelva la promesa del método scan 
-    await fixture.whenStable();
-
-    // Verifica si el método scan haya sido llamado
-    expect(component.scan).toHaveBeenCalled();
+    expect(component.barcodes.length).toBe(1);
+    expect(component.showScanResultAlert).toHaveBeenCalled();
+    expect(component.router.navigate).toHaveBeenCalledWith(
+      ['/marcar-asistencia'],
+      { state: { barcodes: component.barcodes } }
+    );
   });
 
+  // Agrega más pruebas según sea necesario
 });

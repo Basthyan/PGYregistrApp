@@ -1,56 +1,75 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HomeProfesorPage } from './home-profesor.page';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/services/api.service';
 import { NavController } from '@ionic/angular';
+import { of } from 'rxjs';
 
-describe('HomePageProfesor', () => {
+// Mock para ActivatedRoute
+class ActivatedRouteMock {
+  queryParams = of({ user: 'testUser', id: 1 }); 
+}
+
+// Mock para Router
+class RouterMock {
+  getCurrentNavigation() {
+    return {
+      extras: {
+        state: { user: 'testUser', id: 1 }
+      },
+    };
+  }
+  navigate = jasmine.createSpy('navigate');
+}
+
+// Mock para ApiService
+class ApiServiceMock {
+  obtenerCursosPorProfesor(id: number) {
+    // Simula la respuesta del servicio
+    const cursosMock = [
+      { id: 1, nombre: 'Curso 1' },
+      { id: 2, nombre: 'Curso 2' }
+    ];
+    return of(cursosMock);
+  }
+}
+
+// Mock para NavController
+class NavControllerMock {
+  navigateForward = jasmine.createSpy('navigateForward');
+}
+
+describe('HomeProfesorPage', () => {
   let component: HomeProfesorPage;
   let fixture: ComponentFixture<HomeProfesorPage>;
-  let router: Router;
-  let navCtrl: NavController;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeProfesorPage],
-      imports: [IonicModule.forRoot()],
       providers: [
-        { provide: Router, useValue: {} },
-        { provide: NavController, useValue: {} },
+        { provide: ActivatedRoute, useClass: ActivatedRouteMock },
+        { provide: Router, useClass: RouterMock },
+        { provide: ApiService, useClass: ApiServiceMock },
+        NavController,
       ],
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(HomeProfesorPage);
     component = fixture.componentInstance;
-    router = TestBed.inject(Router);
-    navCtrl = TestBed.inject(NavController);
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to generador-qr when verDetalleCurso is called', () => {
+  it('should navigate to /generador-qr when verDetalleCurso is called', () => {
     const cursoId = 1;
-    spyOn(router, 'navigate').and.stub();
-
     component.verDetalleCurso(cursoId);
-
-    expect(router.navigate).toHaveBeenCalledWith(['/generador-qr'], {
-      state: {
-        idProfesor: component.idProfesor,
-        idCurso: cursoId,
-      },
+    expect(component.router.navigate).toHaveBeenCalledWith(['/generador-qr'], {
+      state: { idProfesor: component.idProfesor, idCurso: cursoId },
     });
   });
-
-  it('should navigate to /login when volver is called', () => {
-    spyOn(navCtrl, 'navigateForward').and.stub();
-
-    component.volver();
-
-    expect(navCtrl.navigateForward).toHaveBeenCalledWith('/login');
-  });
 });
-

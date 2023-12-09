@@ -24,7 +24,7 @@ export class HomePage {
     private alertController: AlertController,
     private http: HttpClient,
     private activeroute: ActivatedRoute,
-    private router: Router
+    public router: Router
   ) {
     this.activeroute.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation()?.extras.state) {
