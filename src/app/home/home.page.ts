@@ -13,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
 export class HomePage {
   
   barcodes: any[] = [];
-
   userHome: any;
 
   constructor(
@@ -42,7 +41,6 @@ export class HomePage {
   async showScanResultAlert() {
     const alert = await this.alertController.create({
       header: 'Escaneo exitoso',
-      message: 'Presiona OK para continuar con el marcaje de asistencia...',
       buttons: [
         {
           text: 'Cancelar',
@@ -54,13 +52,24 @@ export class HomePage {
         {
           text: 'OK',
           handler: () => {
-            console.log('Datos del código QR:', this.barcodes);
-            this.router.navigate(['/marcar-asistencia'], {state: {barcodes: this.barcodes}});
+            this.abrirCorreo();
           },
         },
       ],
     });
     await alert.present();
+  }
+
+  abrirCorreo() {
+    let destinatario = 'profesor@duocuc.cl';
+    let asunto = 'Asistencia';
+    let cuerpo = `Datos del código QR: ${JSON.stringify(this.barcodes)}`;
+
+    // Construir el enlace de correo electrónico con la sintaxis "mailto"
+    let mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+
+    // Abrir la aplicación de correo electrónico predeterminada del usuario
+    window.location.href = mailtoLink;
   }
 
   public async uwu(): Promise<void> {

@@ -15,6 +15,13 @@ profesores = [
                 "codigo": "PGY4121",
                 "seccion": "003D",
                 "alumnos": []
+            },
+            {
+                "id": 2,
+                "nombre": "Desarrollo de Software de Escritorio",
+                "codigo": "PGY3131",
+                "seccion": "015V",
+                "alumnos": []
             }
         ]
     }
