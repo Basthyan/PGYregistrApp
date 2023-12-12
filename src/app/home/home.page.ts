@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import {
-  BarcodeScanner,
-  BarcodeFormat
-} from '@capacitor-mlkit/barcode-scanning';
+import { BarcodeScanner, BarcodeFormat } from '@capacitor-mlkit/barcode-scanning';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';

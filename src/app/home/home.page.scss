@@ -23,3 +23,32 @@
   text-align: center;
   justify-content: center;
 }
+
+.contenedor{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.boton{
+  font-size: 30px; 
+  border-radius: 20px; 
+  border-width: 2px; 
+  border-style: solid; 
+  padding: 10px 10px;
+  background-color: yellow;
+  border-color: transparent;
+}
+
+h2{
+  text-align: center;
+  font-weight: bold;
+}
+
+p{
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+

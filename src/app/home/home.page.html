@@ -1,17 +1,17 @@
 <!-- Navbar -->
 <mat-toolbar class="navbar">
-    <mat-toolbar-row>
-      <span>RegistrApp</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <!-- Inicio de Estudiantes -->
-  <ion-content>
-    <br>
-    <h1 class="title"> ¡Bienvenido a RegistrApp! </h1>
-    <h1 class="title">{{ userHome }}</h1>
-  
-    <ion-card>
+  <mat-toolbar-row>
+    <span>RegistrApp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Inicio de Estudiantes -->
+<ion-content>
+  <br><br>
+  <h1 class="title" style="font-weight: bold;"> ¡Bienvenido a RegistrApp! </h1>
+  <h1 class="title">{{ userHome }}</h1><br>
+
+  <!--     <ion-card>
       <ion-card-header>
         <ion-card-title>Prog. Aplicaciones</ion-card-title>
         <ion-card-subtitle>Juan Pulgar</ion-card-subtitle>
@@ -22,9 +22,16 @@
       </ion-card-content>
     
       <ion-button fill="clear" style="color: rgb(252, 252, 76)" (click)="uwu(); scan()">Registrar Asistencia</ion-button>
-    </ion-card> <br>
-  
-    <ion-card>
+    </ion-card> <br> -->
+<!--   <h2>Escanear código QR</h2> -->
+  <p>Porfavor, presione el botón para escanear el código QR y registrar su asistencia.</p><br>
+  <div class="contenedor">
+    <ion-button class="boton" fill="clear" (click)="uwu(); scan()">
+      <ion-icon name="qr-code" style="color: black;"></ion-icon>
+    </ion-button>
+  </div><br><br>
+
+  <!-- <ion-card>
       <ion-card-header>
         <ion-card-title>Calidad de Software</ion-card-title>
         <ion-card-subtitle>Cindy Contador</ion-card-subtitle>
@@ -48,12 +55,13 @@
       </ion-card-content>
     
       <ion-button fill="clear" style="color: rgb(252, 252, 76)" >Registrar Asistencia</ion-button>
-    </ion-card> <br>
-  
-    <div class="ion-button">
-      <ion-button  type="submit" fill="clear" style="color: rgb(252, 252, 76)" (click)="volver()">Cerrar sesion</ion-button>
-    </div>
-    
-    <br><br>
-  
-  </ion-content>
+    </ion-card> <br> -->
+
+  <div class="ion-button">
+    <ion-button type="submit" fill="clear" style="color: yellow;" (click)="volver()">Cerrar
+      sesión</ion-button>
+  </div>
+
+  <br><br>
+
+</ion-content>
